@@ -19,8 +19,9 @@ export default {
       }
 
       let resp = await axios.post(
-          'http://127.0.0.1:8000/api/testValue',
+          'http://127.0.0.1:8000/api/v1/testValue',
           data)
+
       //     .then(res => res.status);
       // if (resp == 200) {
       //   this.$router.push('/adminPanel');

@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Student::factory(20)->create();
-        AverageBall::factory(10)->create();
-        TypeIndivAchiv::factory(10)->create();
-        IndivAchivBall::factory(10)->create();
+        Student::factory(10)->create();
+        AverageBall::factory(40)->create();
+        TypeIndivAchiv::factory(3)->create();
+        IndivAchivBall::factory(40)->create();
         EducInst::factory(2)->create();
         StudentGroup::factory(5)->create();
         StudentGroupRegistration::factory(10)->create();

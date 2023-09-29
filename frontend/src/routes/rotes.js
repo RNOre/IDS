@@ -1,6 +1,6 @@
 import AuthPage from "../components/AuthPage.vue";
 import AdminPanel from "../components/AdminPanel/AdminPanel.vue";
-import DataItem from "../components/AdminPanel/DataItem.vue";
+import DataItem from "../components/AdminPanel/DataItem/DataItem.vue";
 import {createRouter, createWebHistory} from "vue-router";
 
 const routes = [

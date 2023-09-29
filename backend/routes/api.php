@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 
-Route::post('/testValue', 'App\Http\Controllers\Test@index');
+Route::get('/v1/students', [StudentController::class, 'index'])->name('student.index');
 Route::get('/v1/students/{id}', [StudentController::class, 'show'])->name('student.show');
+Route::delete('/v1/students/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
+
+
+Route::get('/v1/testValue', [Test::class, 'index'])->name('test.index');
