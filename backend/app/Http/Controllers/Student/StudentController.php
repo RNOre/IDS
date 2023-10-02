@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Student\IndexRequest;
-use App\Models\AverageBall;
 use App\Models\Student;
-use App\Models\StudentGroup;
-use App\Models\StudentGroupRegistration;
 
 class StudentController extends Controller
 {
@@ -18,10 +14,9 @@ class StudentController extends Controller
         return response()->json($students);
     }
 
-
-    public function show($id)
+    public function show(Student $student)
     {
-        $student = $this->service->show($id);
+        $student = $this->service->show($student);
 
         return response()->json($student);
     }

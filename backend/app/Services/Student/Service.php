@@ -3,6 +3,7 @@
 namespace App\Services\Student;
 
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class Service
 {
@@ -23,31 +24,27 @@ class Service
         return $data;
     }
 
-    public function show($id)
+    public function show($student)
     {
-        $student = Student::find($id);
+
         $balls = [];
         $groups = [];
 
         foreach ($student->studentGroupRegistration as $groupRegistration) {
-            $groupED = $groupRegistration->enrollmentDate;
-            $groupDD = $groupRegistration->deductionDate;
-            $groupName=$groupRegistration->studentGroup->name;
-            $EI=$groupRegistration->studentGroup->educInst->name;
-            $Groups=['name'=>$groupName, 'EI'=>$EI, 'ed'=>$groupED, 'dd'=>$groupDD];
-            array_push($groups, $Groups);
+            $groupItem = ['name' => $groupRegistration->studentGroup->name, 'EI' => $groupRegistration->studentGroup->educInst->name,
+                'ed' => $groupRegistration->enrollmentDate, 'dd' => $groupRegistration->deductionDate];
+            array_push($groups, $groupItem);
         }
 
         foreach ($student->indivAchivBall as $indivAchivBall) {
-            $indivAchivBallValue = $indivAchivBall->value;
-            $indivAchivBallDate = $indivAchivBall->date;
-            $typeIndivAchivName = $indivAchivBall->typeIndivAchiv->name;
-            $Ball = ['value' => $indivAchivBallValue, 'date' => $indivAchivBallDate, 'name' => $typeIndivAchivName];
-            array_push($balls, $Ball);
+            $ballItem = ['value' => $indivAchivBall->value, 'date' => $indivAchivBall->date,
+                'type' => $indivAchivBall->typeIndivAchiv->name];
+            array_push($balls, $ballItem);
         }
-        $response = ['value' => $student->value, 'groups'=>$groups,'balls' => $balls];
 
-        return response()->json($response);
+        $response = ['value' => $student->value, 'groups' => $groups, 'balls' => $balls];
+
+        return $response;
     }
 
     public function destroy($id)

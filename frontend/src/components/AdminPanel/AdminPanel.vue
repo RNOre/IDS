@@ -1,16 +1,11 @@
 <template>
   <div>
-    <div class='title'>
-      <h1>ПИС "ИДС"</h1>
-    </div>
-    <div class='itemList'>
       <router-link v-for="item in linkData" :key="item.index" :to="item.link">
         <div class='wrapper' >
           <h1>{{ item.title }}</h1>
           <p>{{ item.description }}</p>
         </div>
       </router-link>
-    </div>
   </div>
 </template>
 

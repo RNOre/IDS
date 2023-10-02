@@ -14,7 +14,7 @@ export default {
   },
   async created() {
     this.data = await axios.get(`http://localhost:8000/api/v1/students/${this.currentStudent}`)
-        .then(resp => resp.data.original)
+        .then(resp => resp.data)
   }
 }
 </script>

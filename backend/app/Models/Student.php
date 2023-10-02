@@ -9,6 +9,8 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $guarded = false;
+
     public function averageBall()
     {
         return $this->hasMany(AverageBall::class);
